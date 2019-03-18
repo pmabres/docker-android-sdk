@@ -49,16 +49,10 @@ sdkmanager --version
 
 
 echo "Installing packages"
-if [ $built_in_sdk -eq 1 ]
-then
-    while read p; do 
-      android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} ${p}"
-    done < /opt/tools/package-list-minimal.txt
-else
-    while read p; do
-      android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} ${p}"
-    done < /opt/tools/package-list.txt
-fi
+
+while read p; do 
+    android-accept-licenses.sh "sdkmanager ${SDKMNGR_OPTS} ${p}"
+done < /opt/tools/package-list-minimal.txt
 
 echo "Updating SDK"
 update_sdk
